@@ -27,7 +27,7 @@ public class BraintreePaymentPlugin implements MethodCallHandler, ActivityResult
   private Activity activity;
   private Context context;
   Result activeResult;
-  private static final int REQUEST_CODE = 0x1337;
+  private static final int REQUEST_CODE = 4000;
   String clientToken="";
   String amount="";
   String googleMerchantId="";
@@ -77,7 +77,7 @@ public class BraintreePaymentPlugin implements MethodCallHandler, ActivityResult
                         .setCurrencyCode("USD")
                         .build())
                 .billingAddressRequired(true);
-      dropInRequest.googlePaymentRequest(googlePaymentRequest);          
+      dropInRequest.googlePaymentRequest(googlePaymentRequest);
     }else{
       GooglePaymentRequest googlePaymentRequest = new GooglePaymentRequest()
                 .transactionInfo(TransactionInfo.newBuilder()
@@ -87,7 +87,7 @@ public class BraintreePaymentPlugin implements MethodCallHandler, ActivityResult
                         .build())
                 .billingAddressRequired(true)
                 .googleMerchantId(googleMerchantId);;
-        dropInRequest.googlePaymentRequest(googlePaymentRequest);          
+        dropInRequest.googlePaymentRequest(googlePaymentRequest);
     }
     }
 
@@ -101,7 +101,7 @@ public class BraintreePaymentPlugin implements MethodCallHandler, ActivityResult
                     String paymentNonce = result.getPaymentMethodNonce().getNonce();
                     if(paymentNonce == null && paymentNonce.isEmpty()){
                       map.put("status", "fail");
-                      map.put("message", "Payment Nonce is Empty.");  
+                      map.put("message", "Payment Nonce is Empty.");
                       activeResult.success(map);
                     }
                     else{
@@ -123,6 +123,6 @@ public class BraintreePaymentPlugin implements MethodCallHandler, ActivityResult
                 return true;
             default:
               return false;
-        } 
+        }
     }
 }
