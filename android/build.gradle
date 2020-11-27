@@ -3,6 +3,13 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     repositories {
+        maven {
+            url "https://cardinalcommerce.bintray.com/android"
+            credentials {
+                username 'braintree-team-sdk@cardinalcommerce'
+                password '220cc9476025679c4e5c843666c27d97cfb0f951'
+            }
+        }
         google()
         jcenter()
     }
@@ -15,6 +22,13 @@ buildscript {
 
 rootProject.allprojects {
     repositories {
+        maven {
+            url "https://cardinalcommerce.bintray.com/android"
+            credentials {
+                username 'braintree-team-sdk@cardinalcommerce'
+                password '220cc9476025679c4e5c843666c27d97cfb0f951'
+            }
+        }
         google()
         jcenter()
     }
@@ -36,7 +50,7 @@ android {
 }
 
 dependencies{
-    implementation 'com.braintreepayments.api:drop-in:4.1.1'
+    implementation 'com.braintreepayments.api:drop-in:5.0.1'
     implementation 'io.card:android-sdk:5.+'
     implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 }
